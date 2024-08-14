@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Modelos{% endblock %}
+<h2>Modelos</h2>
+<ul>
+    {% for modelo in modelos %}
+        <li>{{ modelo.nombre }} - <a href="{{ url_for('ver_modelo', id=modelo.id) }}">Ver</a> | 
+        <a href="{{ url_for('editar_modelo', id=modelo.id) }}">Editar</a> | 
+        <form action="{{ url_for('eliminar_modelo', id=modelo.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+        </form>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

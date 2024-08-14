@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Proveedores{% endblock %}
+
+{% block content %}
+<h2>Proveedores</h2>
+<ul>
+    {% for proveedor in proveedores %}
+        <li>{{ proveedor.nombre }} - {{ proveedor.contacto }} - 
+        <a href="{{ url_for('ver_proveedor', id=proveedor.id) }}">Ver</a> | 
+        <a href="{{ url_for('editar_proveedor', id=proveedor.id) }}">Editar</a> | 
+        <form action="{{ url_for('eliminar_proveedor', id=proveedor.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+        </form>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

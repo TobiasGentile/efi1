@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Fabricantes{% endblock %}
+
+{% block content %}
+<h2>Fabricantes</h2>
+<ul>
+    {% for fabricante in fabricantes %}
+        <li>{{ fabricante.nombre }} - <a href="{{ url_for('ver_fabricante', id=fabricante.id) }}">Ver</a> | 
+        <a href="{{ url_for('editar_fabricante', id=fabricante.id) }}">Editar</a> | 
+        <form action="{{ url_for('eliminar_fabricante', id=fabricante.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+        </form>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

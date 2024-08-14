@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Características{% endblock %}
+
+<h2>Características</h2>
+<ul>
+    {% for caracteristica in caracteristicas %}
+        <li>{{ caracteristica.nombre }} - <a href="{{ url_for('ver_caracteristica', id=caracteristica.id) }}">Ver</a> | 
+        <a href="{{ url_for('editar_caracteristica', id=caracteristica.id) }}">Editar</a> | 
+        <form action="{{ url_for('eliminar_caracteristica', id=caracteristica.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+        </form>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

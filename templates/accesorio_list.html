@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Accesorios{% endblock %}
+
+{% block content %}
+<h2>Accesorios</h2>
+<ul>
+    {% for accesorio in accesorios %}
+        <li>{{ accesorio.tipo }} - {{ accesorio.descripcion }} - 
+        <a href="{{ url_for('ver_accesorio', id=accesorio.id) }}">Ver</a> | 
+        <a href="{{ url_for('editar_accesorio', id=accesorio.id) }}">Editar</a> | 
+        <form action="{{ url_for('eliminar_accesorio', id=accesorio.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+        </form>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

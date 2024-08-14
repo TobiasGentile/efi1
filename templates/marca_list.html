@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Marcas{% endblock %}
+
+<h2>Marcas</h2>
+<ul>
+    {% for marca in marcas %}
+        <li>{{ marca.nombre }} - <a href="{{ url_for('ver_marca', id=marca.id) }}">Ver</a> | 
+        <a href="{{ url_for('editar_marca', id=marca.id) }}">Editar</a> | 
+        <form action="{{ url_for('eliminar_marca', id=marca.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+        </form>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

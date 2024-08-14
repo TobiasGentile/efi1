@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Equipos en Stock{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Equipos en Stock</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Modelo</th>
+                <th>Categoría</th>
+                <th>Marca</th>
+                <th>Costo</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipo in equipos %}
+                <tr>
+                    <td>{{ equipo.nombre }}</td>
+                    <td>{{ equipo.modelo.nombre }}</td>
+                    <td>{{ equipo.categoria.nombre }}</td>
+                    <td>{{ equipo.modelo.marca.nombre }}</td>
+                    <td>{{ equipo.costo }}</td>
+                    <td>{{ equipo.stock.cantidad_disponible }}</td>
+                    <td>
+                        <a href="{{ url_for('editar_equipo', id=equipo.id) }}" class="btn btn-sm btn-primary">Editar</a>
+                        <form action="{{ url_for('equipo_delete', id=equipo.id) }}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
